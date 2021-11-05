@@ -78,5 +78,8 @@ int main() {
     std::cout << inversion << std::endl;
     auto B =  b_matrix(N);
     std::cout << B << std::endl;
+    matrix<double> X;
+    X=x_matrix(C,B);
+    std::cout<<X<<endl;
    return 0;
   }

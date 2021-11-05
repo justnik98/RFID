@@ -32,7 +32,7 @@ matrix<double> create_matrix(int N, int V) {
   }
     return b;
 }
-/*matrix<double> x_matrix(matrix<double> A, matrix<double> B){
+matrix<double> x_matrix(matrix<double> A, matrix<double> B){
     matrix<double> X (A.size1(),B.size2());
     for(auto i=0; i<=A.size1();i++){        //size1() rows size2() cols
         for(auto j=0;j<=A.size2();j++){
@@ -42,7 +42,7 @@ matrix<double> create_matrix(int N, int V) {
         }
     }
 return X;
-}*/
+}
 
 
 
