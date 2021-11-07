@@ -41,7 +41,7 @@ int main() {
     int Nst = 1;
     int NFin = 100;
     int NStep = 1;
-    int V = pow(2,Q);
+    int V = 32;
     //#################
     double empty = 0;
     double success = 0;
@@ -63,23 +63,28 @@ int main() {
     auto p = create_matrix(N,V);
     std::cout << p << std::endl;
     identity_matrix<double> I (N+1);
-    std::cout << I << std::endl;
     matrix <double> A (N+1,N+1) ;
-    A=static_cast<matrix<double>>(I) - p;
-    cout<<A<<endl;
+    A=static_cast<matrix<double>>(I) - p; // A = I(един) - P
+   // cout<<A<<endl;
     matrix<double> C (N+1,N+1);
-    InvertMatrix(static_cast<matrix<double>>(I),C);
+    InvertMatrix(static_cast<matrix<double>>(A),C);
     cout<<C<<endl;
-    matrix<double> product = prod(trans(A), A);
-    std::cout<<product<<std::endl;
+    /*matrix<double> product = prod(trans(A), A);
+   // std::cout<<product<<std::endl;
     matrix<double> inversion(N+1,N+1);
     bool inverted;
     inverted = InvertMatrix(product, inversion);
-    std::cout << inversion << std::endl;
-    auto B =  b_matrix(N);
+    std::cout << inversion << std::endl; */ // инвертированная A
+    auto B =  b_matrix(N);  // это вектор 0 1 1 1
     std::cout << B << std::endl;
-    matrix<double> X;
-    X=x_matrix(C,B);
-    std::cout<<X<<endl;
-   return 0;
+    /*identity_matrix<double> A (3);
+    matrix<double> B(3,3);
+    for(auto i=0;i<B.size1();i++){
+      for(auto j=0;j<B.size2(); j++){
+          B(i,j)=i*j+2;
+      }
+    }
+    cout<<B<<endl;*/
+    std::cout<<x_matrix(C,B)<<endl;
+    return 0;
   }
