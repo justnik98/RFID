@@ -12,8 +12,10 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/triangular.hpp>
 #include <boost/numeric/ublas/lu.hpp>
+
 using namespace std;
 using namespace boost::numeric::ublas;
+
 template<class T>
 inline bool InvertMatrix (const matrix<T>& input, matrix<T>& inverse) {
     using namespace boost::numeric::ublas;
@@ -33,58 +35,23 @@ inline bool InvertMatrix (const matrix<T>& input, matrix<T>& inverse) {
     return true;
 }
 
-
 int main() {
     //Input params
     int N=4;
-    int Q = 6;
     int Nst = 1;
     int NFin = 100;
     int NStep = 1;
     int V = 32;
     //#################
-    double empty = 0;
-    double success = 0;
-    double conflict = 0;
-   /* ofstream out("../theory.dat");
-    int subFrame = pow(2.0, Q);
-    for (N = Nst; N <= NFin; N += NStep) {
-        conflict = 0;
-        empty = pow((1.0 - (1.0 / subFrame)), N);
-        success = pow((1.0 - (1.0 / subFrame)), N - 1) * (1.0 / subFrame) * N;
-        /*for (auto i = 2; i <= N; i++) {
-            conflict += (factorial(N) / factorial(i) / factorial(N - i)) * pow(1.0 / subFrame, i) *
-                       pow(1.0 - 1.0 / subFrame, N - i);
-        }
-        conflict = 1 - empty -success;
-        out << N << ' ' << success << ' ' << conflict << ' ' << empty << endl;
-        cout << conflict + success + empty << endl;
-    }*/
     auto p = create_matrix(N,V);
     std::cout << p << std::endl;
     identity_matrix<double> I (N+1);
     matrix <double> A (N+1,N+1) ;
     A=static_cast<matrix<double>>(I) - p; // A = I(един) - P
-   // cout<<A<<endl;
     matrix<double> C (N+1,N+1);
+    A(0,0) = 1;
     InvertMatrix(static_cast<matrix<double>>(A),C);
-    cout<<C<<endl;
-    /*matrix<double> product = prod(trans(A), A);
-   // std::cout<<product<<std::endl;
-    matrix<double> inversion(N+1,N+1);
-    bool inverted;
-    inverted = InvertMatrix(product, inversion);
-    std::cout << inversion << std::endl; */ // инвертированная A
     auto B =  b_matrix(N);  // это вектор 0 1 1 1
-    std::cout << B << std::endl;
-    /*identity_matrix<double> A (3);
-    matrix<double> B(3,3);
-    for(auto i=0;i<B.size1();i++){
-      for(auto j=0;j<B.size2(); j++){
-          B(i,j)=i*j+2;
-      }
-    }
-    cout<<B<<endl;*/
     std::cout<<x_matrix(C,B)<<endl;
     return 0;
-  }
+}
