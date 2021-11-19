@@ -39,13 +39,10 @@ int main() {
     identity_matrix<double> I(N + 1);
     matrix<double> A(N + 1, N + 1);
     A = static_cast<matrix<double>>(I) - p; // A = I(един) - P
-    cout << A << endl << endl;
     A(0, 0) = 1;
     matrix<double> C(N + 1, N + 1);
     InvertMatrix(static_cast<matrix<double>>(A), C);
-    cout << C << endl;
     auto B = b_matrix(N);  // это вектор 0 1 1 1
-    std::cout << B << std::endl;
     std::cout << x_matrix(C, B) << endl;
     return 0;
 }
