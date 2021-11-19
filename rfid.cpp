@@ -22,9 +22,6 @@ matrix<double> create_matrix(int N, int V) {
             }
         }
     }
-    for(auto i=0; i < p.size2();i++){
-        p(p.size1()-1, i) = 1;
-    }
 
     return p;
 }
