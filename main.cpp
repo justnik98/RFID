@@ -28,21 +28,23 @@ inline bool InvertMatrix(const matrix<T> &input, matrix<T> &inverse) {
     return true;
 }
 
-
 int main() {
     //Input params
-    int N = 20;
-    int V = 4;
+    int N=4;
+    int Nst = 1;
+    int NFin = 100;
+    int NStep = 1;
+    int V = 32;
     //#################
-    auto p = create_matrix(N, V);
-    std::cout << p << std::endl << endl;
-    identity_matrix<double> I(N + 1);
-    matrix<double> A(N + 1, N + 1);
-    A = static_cast<matrix<double>>(I) - p; // A = I(един) - P
-    A(0, 0) = 1;
-    matrix<double> C(N + 1, N + 1);
-    InvertMatrix(static_cast<matrix<double>>(A), C);
-    auto B = b_matrix(N);  // это вектор 0 1 1 1
-    std::cout << x_matrix(C, B) << endl;
+    auto p = create_matrix(N,V);
+    std::cout << p << std::endl;
+    identity_matrix<double> I (N+1);
+    matrix <double> A (N+1,N+1) ;
+    A=static_cast<matrix<double>>(I) - p; // A = I(един) - P
+    matrix<double> C (N+1,N+1);
+    A(0,0) = 1;
+    InvertMatrix(static_cast<matrix<double>>(A),C);
+    auto B =  b_matrix(N);  // это вектор 0 1 1 1
+    std::cout<<x_matrix(C,B)<<endl;
     return 0;
 }
