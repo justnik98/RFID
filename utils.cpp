@@ -5,9 +5,9 @@
 #include "utils.h"
 
 double factorial(double num) {
-    double tmp=1;
-    for(auto i=2; i<=num ; i++){
-        tmp*=i;
+    double tmp = 1;
+    for (auto i = 2; i <= num; i++) {
+        tmp *= i;
     }
     return tmp;
 }
