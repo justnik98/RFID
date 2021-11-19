@@ -22,7 +22,6 @@ matrix<double> create_matrix(int N, int V) {
             }
         }
     }
-
     return p;
 }
 
@@ -54,11 +53,3 @@ matrix<double> x_matrix(matrix<double> A, matrix<double> B) {
     }
     return X;
 }
-
-
-
-
-
-
-
-
