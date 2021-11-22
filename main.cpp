@@ -37,7 +37,6 @@ int main() {
     int V = 32;
     //#################
     auto p = create_matrix(N, V);
-    std::cout << p << std::endl;
     identity_matrix<double> I(N + 1);
     matrix<double> A(N + 1, N + 1);
     A = static_cast<matrix<double>>(I) - p; // A = I(един) - P
@@ -47,7 +46,7 @@ int main() {
     auto B = b_matrix(N);  // это вектор 0 1 1 1
     auto res = x_matrix(C, B);
     for (auto i = 0; i < N + 1; ++i) {
-        std::cout << res(0, i) << endl;
+        std::cout << i << " : " << res(i, 0) << endl;
     }
     return 0;
 }
